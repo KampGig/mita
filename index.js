@@ -36,6 +36,13 @@ mongoose.connect(dbconfig.db, {
 app.get("/", function (req, res) {
   res.send("WORKING!!!");
 });
+// METHOD TO USE REQUEST AS AN OBJECT
+app.use(express.json());
+
+// ROUTES
+app.use("/users", require("./routes/users.routes"));
+
+app.use(errors.errorHandler);
 
 
  // TOKEN BYPASS PAGES
@@ -58,14 +65,7 @@ app.get("/", function (req, res) {
       })
   );
 
-    // METHOD TO USE REQUEST AS AN OBJECT
-    // app.use(express.json());
-
-    // ROUTES
-    app.use("/users", require("./routes/users.routes"));
-   
-    app.use(errors.errorHandler);
- 
+    
    
 app.use("/uploads", express.static("uploads"));
 app.listen(process.env.PORT || 5000);
