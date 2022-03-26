@@ -46,7 +46,7 @@ app.use(express.json());
 
 // ROUTES
 
-app.use("/uploads", express.static("uploads"));
+app.use("http://mita-mvp.herokuapp.com/uploads", express.static("uploads"));
 app.use("/users", require("./routes/users.routes"));
 
 app.use(errors.errorHandler);
@@ -57,7 +57,7 @@ app.use(errors.errorHandler);
   app.use(
       auth.authenticateToken.unless({
           path:[
-              '/uploads/',
+              'http://mita-mvp.herokuapp.com/uploads/',
               {url:"/users/login", method: ["POST"]},
            
               {url:"/users/register", method: ["POST"]},
