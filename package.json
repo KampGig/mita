@@ -4,7 +4,7 @@
   "description": "This is the maagic behind kampgig",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nengi Precious Solomon",
@@ -20,7 +20,15 @@
     "mongoose": "^6.2.1",
     "mongoose-unique-validator": "^3.0.0",
     "multer": "^1.4.4",
-   
     "twilio": "^3.75.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/9gig/mita.git"
+  },
+  "bugs": {
+    "url": "https://github.com/9gig/mita/issues"
+  },
+  "homepage": "https://github.com/9gig/mita#readme"
 }
