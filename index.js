@@ -13,7 +13,7 @@ const bodyParser = require('body-parser');
 
 
 // INITIALIZING EXPRESS
-const app           = express();
+
 app.use(cors({origin:"*"}));
 
 // MONGODB CONNECTION
