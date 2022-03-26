@@ -11,6 +11,11 @@ const auth          = require('./middlewares/😁');
 const errors        = require('./middlewares/😡');
 const bodyParser = require('body-parser');
 
+
+// INITIALIZING EXPRESS
+const app           = express();
+app.use(cors({origin:"*"}));
+
 // MONGODB CONNECTION
 mongoose.Promise = global.Promise;
 mongoose.connect(dbconfig.db, {
