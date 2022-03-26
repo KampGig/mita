@@ -58,6 +58,13 @@ app.get("/", function (req, res) {
       })
   );
 
+    // METHOD TO USE REQUEST AS AN OBJECT
+    // app.use(express.json());
+
+    // ROUTES
+    app.use("/users", require("./routes/users.routes"));
+   
+    app.use(errors.errorHandler);
  
    
 app.use("/uploads", express.static("uploads"));
