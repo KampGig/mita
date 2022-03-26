@@ -45,6 +45,8 @@ app.get("/", function (req, res) {
 app.use(express.json());
 
 // ROUTES
+
+app.use("/uploads", express.static("uploads"));
 app.use("/users", require("./routes/users.routes"));
 
 app.use(errors.errorHandler);
@@ -72,5 +74,4 @@ app.use(errors.errorHandler);
 
     
    
-app.use("/uploads", express.static("uploads"));
 app.listen(process.env.PORT || 5000);
