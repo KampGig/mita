@@ -1,7 +1,6 @@
 const bcryptjs = require("bcryptjs");
 const bcrypt        = require("bcryptjs");
 const userService   =require("../services/users.services");
-const client        = require('twilio')('AC163819350262d2d7886d17f6ec3bba4e', 'b874f8f3bb86cfada55cbc88066c347d');
 
 
 
