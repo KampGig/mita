@@ -42,7 +42,7 @@ app.use(express.json());
 // ROUTES
 app.use("/users", require("./routes/users.routes"));
 
-app.use(errors.errorHandler);
+// app.use(errors.errorHandler);
 
 
  // TOKEN BYPASS PAGES
