@@ -25,8 +25,37 @@ mongoose.connect(dbconfig.db, {
     } 
   );
 
+   // INIT bodyParser
+   app.use(bodyParser.urlencoded({extended: true}));
+   // CHECKING TOKEN IF NEEDED
+   auth.authenticateToken.unless = unless;
+   express.static.unless = unless;
+ 
+  
+
 app.get("/", function (req, res) {
   res.send("WORKING!!!");
 });
 
+
+ // TOKEN BYPASS PAGES
+ 
+  app.use(
+      auth.authenticateToken.unless({
+          path:[
+              '/uploads/',
+              {url:"/users/login", method: ["POST"]},
+           
+              {url:"/users/register", method: ["POST"]},
+              {url:"/users/otpRequest", method: ["POST"]},
+              {url:"/users/checkCode", method: ["POST"]},
+              {url:"/users/createPost", method: ["POST"]},
+              {url:"/users/roomiePosts", method: ["GET"]},
+              {url:"/users/updatePost/6227b709a519c6037256f68d", method: ["PUT"]},
+            //   {url:"/users/postByUser/james@123", method: ["GET"]},
+              // {url:"/uploads/1647476387750-.png", method: ["GET"]},
+          ]
+      })
+  );
+app.use("/uploads", express.static("uploads"));
 app.listen(process.env.PORT || 5000);
