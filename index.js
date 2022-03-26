@@ -40,7 +40,7 @@ app.use("/uploads", express.static("uploads"));
   
 
 app.get("/", function (req, res) {
-  res.send(" All Good boy");
+  res.send("WORKING!!!");
 });
  // METHOD TO USE REQUEST AS AN OBJECT
  app.use(express.json());
