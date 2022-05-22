@@ -1,5 +1,5 @@
 module.exports = {
-    db:'mongodb://localhost:27017/kamper'
+    db:'mongodb+srv://CTO:!!neng!123@kampgig.cwnn2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 };
 
 //mongodb+srv://kamp:!!kampg!g4@kampgigdb.bm50c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority   
