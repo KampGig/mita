@@ -11,7 +11,7 @@ function authenticateToken(req, res, next){
     jwt.verify(token, "!!kampg!g4", (err, user) => {
         if(err){
             console.log(err);
-            return res.sendStatus(403);
+            return res.sendStatus(401);
         } 
         req.user = user;
         next();
@@ -20,7 +20,7 @@ function authenticateToken(req, res, next){
 
 function generateAccessToken(userID){
     return jwt.sign({data: userID}, "!!kampg!g4", {
-        expiresIn: "2 days"
+        expiresIn: "60m"
     });
 }
 

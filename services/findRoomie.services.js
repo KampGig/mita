@@ -1,4 +1,5 @@
 const Post  = require('../models/roomiePosts.model');
+const Request  = require('../models/request.model');
 const User = require("../models/user.model");
 
 async function findRoomie(params, callback){
@@ -13,6 +14,21 @@ async function findRoomie(params, callback){
             return callback(error);
         });
     }
+};
+
+//Request Post Method
+async function makeRequest(params, callback){
+    // const userid = params.userID;
+    // const user = await User.findOne({userid});
+
+    // if(user != null){
+        const requestPost = new Request(params);
+        requestPost.save().then((response) =>{
+            return callback(null, response);
+        }).catch((error) =>{
+            return callback(error);
+        });
+    // }
 };
 
 // Get all Roomie post by address
@@ -87,5 +103,6 @@ module.exports ={
     getfindRoomie,
     getByuserID,
     updateByID,
-    deleteByID
+    deleteByID,
+    makeRequest 
 };

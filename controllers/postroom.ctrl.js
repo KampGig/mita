@@ -52,6 +52,18 @@ exports.create = (req,res, next) =>{
 }
 
 
+exports.makeRequest = (req,res, next) =>{
+    const {posterName, posterContact, reqsterName, reqsterContact, posterImg,reqsterImg, status, address, price} = req.body;
+    roomieServices.makeRequest(req.body, (error, result) =>{
+        if(error){return next(error);}
+        return res.status(200).send({
+            message:"success",
+            data: result,
+        });
+    });
+}
+
+
 // Get all
 exports.getAll = (req,res, next) =>{
    

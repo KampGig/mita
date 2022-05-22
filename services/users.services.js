@@ -1,7 +1,10 @@
 const User = require("../models/user.model");
+const Renting = require("../models/rentReq.model");
 const Post = require("../models/roomiePosts.model");
+const Rent = require("../models/rentPost");
 const bcrypt = require("bcryptjs");
 const auth = require("../middlewares/😁");
+
 
 async function login({userID, password}, callback){
     const user = await User.findOne({userID});
@@ -12,7 +15,7 @@ async function login({userID, password}, callback){
             return callback(null, {...user.toJSON(), token});
         }else{
             return callback({
-                message: "Invalid UserID / Password"
+                message: "Invalid Password"
             });
         }
     }else{
@@ -34,7 +37,28 @@ async function register(params, callback){
     });
 }
 
-
+async function rentRequest({postID,fullName,userID,phone}, callback){
+    if(postID === undefined){
+        return callback({message:"Property not found"});
+    }
+   var rent = await Rent.findById(postID);
+   const renting = new Renting({
+        
+    fullName:fullName,
+    phone:phone,
+    status:"inprogress",
+    userID:userID,
+     address: rent.address,
+     price: rent.price,
+     landlord: rent.landlord,
+     image:rent.images[0]
+      });
+      renting.save().then((response) =>{
+          return callback(null, response);
+      }).catch((error)=>{
+          return callback(error);
+      });
+}
 
 async function findRoomie({userID, title, address, price }, callback){
     const user = await User.findOne({userID});
@@ -54,5 +78,6 @@ async function findRoomie({userID, title, address, price }, callback){
 module.exports ={
     login,
     register,
+    rentRequest,
     findRoomie
 };

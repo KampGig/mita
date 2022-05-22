@@ -1,6 +1,7 @@
 const bcryptjs = require("bcryptjs");
 const bcrypt        = require("bcryptjs");
 const userService   =require("../services/users.services");
+const Rent = require("../models/rentPost");
 
 
 
@@ -120,3 +121,23 @@ exports.findRoomie = (req, res, next) => {
   });
   });
 };
+
+
+//Request Renting
+exports.rentHouse = (req, res, next)=>{
+ const postID = req.body.id;
+ const  fullName = req.body. fullName;
+ const userID = req.body.userID;
+ const  phone= req.body.phone;
+
+ userService.rentRequest({postID,fullName,userID,phone},(error,result) =>{
+  if(error){
+      return next(error);
+  }
+  return res.status(200).send({
+      message: "success",
+      data: result,
+  });
+});
+  
+}
